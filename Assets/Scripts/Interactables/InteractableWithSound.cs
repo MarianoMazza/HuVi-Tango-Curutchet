@@ -14,6 +14,9 @@ public class InteractableWithSound : Interactable
     GameObject nextObject;
 
     [SerializeField]
+    protected float timeToSpawnNextObject;
+
+    [SerializeField]
     bool activateNextAnimation;
 
     [SerializeField]
@@ -32,14 +35,14 @@ public class InteractableWithSound : Interactable
     {
         RepositionRanger();
         Speak();
-        StartCoroutine(AnimateAfterTime(gameObject, timeToAnimateThisObject));
-        SpawnNextObject();
+        StartCoroutine(AnimateAfterTime(this.gameObject, timeToAnimateThisObject));
+        StartCoroutine(SpawnNextObject(timeToSpawnNextObject));
         DisableThisCollider();
     }
 
     public void DisableThisCollider()
     {
-        gameObject.GetComponent<Collider>().enabled = false;
+        this.gameObject.GetComponent<Collider>().enabled = false;
     }
 
     public void RepositionRanger()
@@ -51,10 +54,11 @@ public class InteractableWithSound : Interactable
         }
     }
 
-    public void SpawnNextObject()
+    public IEnumerator SpawnNextObject(float timeToSpawnNextObject)
     {
         if (nextObject != null)
         {
+            yield return new WaitForSeconds(timeToSpawnNextObject);
             nextObject.SetActive(true);
             if (activateNextAnimation)
             {

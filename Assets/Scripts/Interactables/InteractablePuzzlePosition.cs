@@ -8,6 +8,9 @@ public class InteractablePuzzlePosition : Interactable
     [SerializeField]
     GameObject playerHand;
 
+    [SerializeField]
+    bool lockPositionedItem;
+
     public override void Interact()
     {
         if (playerHand.transform.childCount > 0)
@@ -18,6 +21,10 @@ public class InteractablePuzzlePosition : Interactable
             childGameObject0.transform.localScale = this.transform.localScale;
             Vector3 newPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y - 0.12f, this.transform.localPosition.z);
             childGameObject0.transform.localPosition = newPosition;
+            if (lockPositionedItem)
+            {
+                childGameObject0.GetComponent<InteractablePickUp>().enabled = false;
+            }
         }
     }
 }

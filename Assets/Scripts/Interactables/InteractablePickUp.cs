@@ -21,17 +21,24 @@ public class InteractablePickUp : Interactable
         if (playerHand.transform.childCount > 0)
         {
             GameObject childGameObject0 = playerHand.transform.GetChild(0).gameObject;
-            //childGameObject0.transform.parent = PetroglyphTable.transform; here the object being held would stop being the hand's child
-            //childGameObject0.transform.localPosition = startingPosition;
-            childGameObject0.transform.localRotation = startingRotation;
-            childGameObject0.transform.localScale = startingScale;
+            childGameObject0.transform.parent = null;
+            childGameObject0.GetComponent<InteractablePickUp>().ResetRotationAndScale();
+            childGameObject0.GetComponent<Rigidbody>().isKinematic = false;
             this.transform.parent = playerHand.transform;
             this.transform.localPosition = new Vector3(0, 0, 0);
+            this.GetComponent<Rigidbody>().isKinematic = true;
         }
         else
         {
-            transform.parent = playerHand.transform;
-            transform.localPosition = new Vector3(0, 0, 0);
+            this.transform.parent = playerHand.transform;
+            this.transform.localPosition = new Vector3(0, 0, 0);
+            this.GetComponent<Rigidbody>().isKinematic = true;
         }
+    }
+
+    private void ResetRotationAndScale()
+    {
+        this.transform.localRotation = startingRotation;
+        this.transform.localScale = startingScale;
     }
 }

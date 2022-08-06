@@ -19,12 +19,10 @@ public class InteractablePainting : Interactable
     [SerializeField]
     GameObject prizeIfThereIsNoVideo;
 
+    [SerializeField]
+    GameObject ejector;
+
     private int milisecondsBeforeTeleporting = 1000;
-
-    private void Awake()
-    {
-
-    }
 
     public override void Interact()
     {
@@ -51,5 +49,14 @@ public class InteractablePainting : Interactable
         player.transform.position = sphere360VideoTransform.position;
         player.GetComponent<CharacterController>().enabled = false;
         sphere360VideoTransform.gameObject.SetActive(true);
+        await Task.Delay((int)sphere360VideoTransform.GetComponent<Sphere360>().secondsToFinishVideo * 1000);
+        ActivateEjector();
+    }
+
+    private void ActivateEjector() {
+        if(ejector)
+        {
+            ejector.SetActive(true);
+        }
     }
 }
