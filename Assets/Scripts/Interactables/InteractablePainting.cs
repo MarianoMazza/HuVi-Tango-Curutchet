@@ -2,7 +2,7 @@
 using UnityEngine.Video;
 using System.Threading.Tasks;
 
-public class InteractablePainting : Interactable
+public class InteractablePainting : InteractableWithSound
 {
     [SerializeField]
     VideoClip video360;
@@ -26,17 +26,18 @@ public class InteractablePainting : Interactable
 
     public override void Interact()
     {
+        base.Interact();
         if (video360)
         {
             TakePlayerToSee360Video();
         }
         else if (prizeIfThereIsNoVideo)
         {
-            prizeIfThereIsNoVideo.SetActive(true);
+            //prizeIfThereIsNoVideo.SetActive(true);
         }
         else
         {
-            this.GetComponent<Animator>().enabled = true;
+            //this.GetComponent<Animator>().enabled = true;
         }
     }
 

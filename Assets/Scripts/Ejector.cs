@@ -8,10 +8,12 @@ public class Ejector : MonoBehaviour
     [SerializeField]
     GameObject[] objectsToBeEjected = new GameObject[0];
 
+    [SerializeField]
+    int force = 200;
+
     int ejectedObjectsCounter;
     int pushAngle = 90;
     int pushAngleModification;
-    int force = 200;
     int timeBeforeNextEject = 3;
 
     private void Start()
