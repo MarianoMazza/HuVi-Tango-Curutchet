@@ -28,6 +28,7 @@ public class Ejector : MonoBehaviour
         if(ejectedObjectsCounter < objectsToBeEjected.Length)
         {
             GameObject objectToBeEjected = objectsToBeEjected[ejectedObjectsCounter];
+            objectToBeEjected.transform.parent = null;
             objectToBeEjected.SetActive(true);
             Rigidbody rigidbody = objectToBeEjected.GetComponent<Rigidbody>();
             rigidbody.AddForce(CalculatePushDirection() * force);

@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 2912564093928104896}
   - component: {fileID: 2912564093928104902}
   - component: {fileID: 6350077854814879759}
+  - component: {fileID: 7281352946693127429}
   m_Layer: 8
   m_Name: Footprint
   m_TagString: Untagged
@@ -324,6 +325,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7281352946693127429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2912564093928104899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26161cfbbcec56e4ab13ffcb3d6ecaf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHand: {fileID: 0}
 --- !u!1 &2912564094133787583
 GameObject:
   m_ObjectHideFlags: 0

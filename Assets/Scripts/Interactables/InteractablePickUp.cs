@@ -8,6 +8,7 @@ public class InteractablePickUp : Interactable
     Vector3 startingPosition;
     Quaternion startingRotation;
     Vector3 startingScale;
+    public bool isPositioned { get; set; }
 
     private void Start()
     {
@@ -18,6 +19,11 @@ public class InteractablePickUp : Interactable
 
     public override void Interact()
     {
+        if (isPositioned)
+        {
+            this.transform.parent.GetChild(0).GetComponent<InteractablePuzzlePosition>().LoseObjective();
+            isPositioned = false;
+        }
         if (playerHand.transform.childCount > 0)
         {
             GameObject childGameObject0 = playerHand.transform.GetChild(0).gameObject;
@@ -36,7 +42,7 @@ public class InteractablePickUp : Interactable
         }
     }
 
-    private void ResetRotationAndScale()
+    public void ResetRotationAndScale()
     {
         this.transform.localRotation = startingRotation;
         this.transform.localScale = startingScale;
