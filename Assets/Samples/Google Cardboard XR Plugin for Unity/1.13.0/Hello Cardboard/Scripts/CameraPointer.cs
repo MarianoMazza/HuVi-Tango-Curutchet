@@ -18,7 +18,7 @@ public class CameraPointer : MonoBehaviour
                 ExitGazedObject();
                 ResetGazeScript();
                 Interactable gazedObjectInteractableScript = hit.transform.gameObject.GetComponent<Interactable>();
-                if (gazedObjectInteractableScript) {
+                if (gazedObjectInteractableScript != null && gazedObjectInteractableScript.isActiveAndEnabled) {
                     _gazedAtObject = hit.transform.gameObject;
                     this.GetComponent<Gaze>().enabled = true;
                     this.GetComponent<Gaze>().SetSeenObjectScript(gazedObjectInteractableScript);

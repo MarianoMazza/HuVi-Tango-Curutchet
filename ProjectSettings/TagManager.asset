@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Objective
   - Distractor
+  - Footprint
   layers:
   - Default
   - TransparentFX

@@ -8,7 +8,7 @@ public class PuzzleManager : MonoBehaviour
     sbyte totalObjectives;
 
     [SerializeField]
-    GameObject ejector;
+    GameObject nextObject;
 
     sbyte objectiveCount;
 
@@ -28,7 +28,7 @@ public class PuzzleManager : MonoBehaviour
     {
         if(objectiveCount >= totalObjectives)
         {
-            ejector.SetActive(true);
+            nextObject.SetActive(true);
         }
     }
 }

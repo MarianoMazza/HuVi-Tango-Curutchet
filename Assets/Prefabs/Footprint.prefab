@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 7281352946693127429}
   m_Layer: 8
   m_Name: Footprint
-  m_TagString: Untagged
+  m_TagString: Footprint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
