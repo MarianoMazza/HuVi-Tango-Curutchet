@@ -11,7 +11,7 @@ public class InteractablePuzzlePosition : Interactable
     PuzzleManager puzzleManager;
 
     [SerializeField]
-    GameObject correctPuzzlePiece;
+    GameObject[] correctPuzzlePiece = new GameObject[0];
 
     [SerializeField]
     float xRotation;
@@ -20,9 +20,13 @@ public class InteractablePuzzlePosition : Interactable
     float yRotation;
 
     [SerializeField]
-    Transform objectiveTransformForPuzzlePiece;
+    float ejectForce = 300;
+
+    [SerializeField]
+    Transform[] objectiveTransformForPuzzlePiece = new Transform[0];
 
     int timeBeforeEject = 3;
+    int objectiveTransformArrayPosition = 0;
 
     public override void Interact()
     {
@@ -30,23 +34,39 @@ public class InteractablePuzzlePosition : Interactable
         {
             return;
         }
-        GameObject childGameObject0 = playerHand.transform.GetChild(0).gameObject;
-        childGameObject0.transform.parent = this.transform.parent.transform;
-        childGameObject0.transform.localRotation = objectiveTransformForPuzzlePiece == null ? new Quaternion(xRotation, yRotation, 0, 0) : objectiveTransformForPuzzlePiece.localRotation;
-        Vector3 newPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y - 0.12f, this.transform.localPosition.z);
-        childGameObject0.transform.localPosition = newPosition;
-        bool isExpectingFootprint = correctPuzzlePiece.CompareTag("Footprint");
-        bool receivedExpectedFootprint = isExpectingFootprint && childGameObject0.CompareTag("Footprint");
-        if (childGameObject0.CompareTag("Distractor") || childGameObject0 != correctPuzzlePiece && !receivedExpectedFootprint)
+        GameObject objectCurrentlyHeldByPlayer = playerHand.transform.GetChild(0).gameObject;
+        SetHeldObjectToPuzzleposition(objectCurrentlyHeldByPlayer);
+        bool isExpectingFootprint = correctPuzzlePiece[objectiveTransformArrayPosition].CompareTag("Footprint");
+        bool receivedExpectedFootprint = isExpectingFootprint && objectCurrentlyHeldByPlayer.CompareTag("Footprint");
+        if (objectCurrentlyHeldByPlayer.CompareTag("Distractor") || objectCurrentlyHeldByPlayer != correctPuzzlePiece[objectiveTransformArrayPosition] && !receivedExpectedFootprint)
         {
-            StartCoroutine(Eject(childGameObject0));
+            StartCoroutine(Eject(objectCurrentlyHeldByPlayer));
         }
         else
         {
+            if (objectiveTransformForPuzzlePiece.Length == 0)
+            {
+                objectiveTransformArrayPosition++;
+            }
             puzzleManager.IncreaseObjectiveCount();
-            childGameObject0.GetComponent<InteractablePickUp>().isPositioned = true;
-            childGameObject0.GetComponent<InteractablePickUp>().enabled = false;
+            objectCurrentlyHeldByPlayer.GetComponent<InteractablePickUp>().isPositioned = true;
+            objectCurrentlyHeldByPlayer.GetComponent<InteractablePickUp>().enabled = false;
         }
+    }
+
+    private void SetHeldObjectToPuzzleposition(GameObject objectCurrentlyHeldByPlayer)
+    {
+        objectCurrentlyHeldByPlayer.transform.parent = this.transform.parent.transform;
+        objectCurrentlyHeldByPlayer.transform.localRotation = objectiveTransformForPuzzlePiece.Length == 0 ? new Quaternion(xRotation, yRotation, 0, 0) : objectiveTransformForPuzzlePiece[objectiveTransformArrayPosition].localRotation;
+        Vector3 newPosition;
+        if (objectiveTransformForPuzzlePiece.Length == 0) {
+            newPosition = new Vector3(this.transform.localPosition.x, this.transform.localPosition.y - 0.12f, this.transform.localPosition.z);
+        }
+        else
+        {
+            newPosition = new Vector3(objectiveTransformForPuzzlePiece[objectiveTransformArrayPosition].transform.localPosition.x, objectiveTransformForPuzzlePiece[objectiveTransformArrayPosition].transform.localPosition.y, objectiveTransformForPuzzlePiece[objectiveTransformArrayPosition].transform.localPosition.z);
+        }
+        objectCurrentlyHeldByPlayer.transform.localPosition = newPosition;
     }
 
     public void LoseObjective()
@@ -60,8 +80,7 @@ public class InteractablePuzzlePosition : Interactable
         childGameObject0.transform.parent = null;
         childGameObject0.GetComponent<InteractablePickUp>().ResetRotationAndScale();
         Rigidbody rigidbody = childGameObject0.GetComponent<Rigidbody>();
-        rigidbody.AddForce(transform.forward * 300);
-        childGameObject0.GetComponent<Rigidbody>().isKinematic = false;
+        rigidbody.isKinematic = false;
+        rigidbody.AddForce((transform.forward * -1) * ejectForce);
     }
-
 }

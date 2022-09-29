@@ -50,7 +50,7 @@ public class InteractablePainting : InteractableWithSound
         player.transform.position = sphere360VideoTransform.position;
         player.GetComponent<CharacterController>().enabled = false;
         sphere360VideoTransform.gameObject.SetActive(true);
-        await Task.Delay((int)sphere360VideoTransform.GetComponent<Sphere360>().secondsToFinishVideo * 1000);
+        await Task.Delay(((int)sphere360VideoTransform.GetComponent<Sphere360>().secondsToFinishVideo * 1000) + 3000);
         ActivateEjector();
     }
 

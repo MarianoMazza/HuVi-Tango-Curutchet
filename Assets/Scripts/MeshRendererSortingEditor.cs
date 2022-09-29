@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEditor;
 using System.Linq;
 
+#if UNITY_EDITOR
 /// This just exposes the Sorting Layer / Order in MeshRenderer since it's there
 /// but not displayed in the inspector.
 [CustomEditor(typeof(MeshRenderer))]
@@ -50,3 +51,4 @@ public class MeshRendererSortingEditor : Editor
         return layers[newLayerValue].id;
     }
 }
+#endif
