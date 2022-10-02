@@ -5,12 +5,12 @@ using UnityEngine;
 public class PuzzleManager : MonoBehaviour
 {
     [SerializeField]
-    sbyte totalObjectives;
+    int totalObjectives;
 
     [SerializeField]
     GameObject nextObject;
 
-    sbyte objectiveCount;
+    int objectiveCount;
 
     public void IncreaseObjectiveCount()
     {
@@ -24,11 +24,26 @@ public class PuzzleManager : MonoBehaviour
         DetermineIfObjectiveIsAccomplished();
     }
 
-    private void DetermineIfObjectiveIsAccomplished()
+    protected virtual void DetermineIfObjectiveIsAccomplished()
     {
         if(objectiveCount >= totalObjectives)
         {
             nextObject.SetActive(true);
         }
+    }
+
+    public int GetTotalObjectives()
+    {
+        return totalObjectives;
+    }
+
+    public int GetObjectiveCount()
+    {
+        return objectiveCount;
+    }
+
+    public GameObject GetNextObject()
+    {
+        return nextObject;
     }
 }

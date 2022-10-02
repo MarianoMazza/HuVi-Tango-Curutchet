@@ -9,7 +9,7 @@ public class Sphere360 : MonoBehaviour {
     Transform playerTransform;
     Vector3 originalPlayerPosition;
 
-    void Start()
+    void OnEnable()
     {
         video = GetComponent<VideoPlayer>();
         video.Prepare();

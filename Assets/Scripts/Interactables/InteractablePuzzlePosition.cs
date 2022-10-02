@@ -44,7 +44,7 @@ public class InteractablePuzzlePosition : Interactable
         }
         else
         {
-            if (objectiveTransformForPuzzlePiece.Length == 0)
+            if (objectiveTransformForPuzzlePiece.Length != 0)
             {
                 objectiveTransformArrayPosition++;
             }

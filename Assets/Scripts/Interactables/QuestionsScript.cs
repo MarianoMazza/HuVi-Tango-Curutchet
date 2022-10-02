@@ -23,7 +23,7 @@ public class QuestionsScript : InteractableWithSound
     bool amIFinalQuestion;
 
     [SerializeField]
-    GameObject finalCollider;
+    GameObject ejector;
 
     [SerializeField]
     AudioClip dialogueIfLastQuestion;
@@ -63,7 +63,7 @@ public class QuestionsScript : InteractableWithSound
         yield return new WaitWhile(() => audioSource.isPlaying);
         this.SetDialogue(dialogueIfLastQuestion);
         this.Speak();
-        finalCollider.SetActive(false);
+        ejector.SetActive(true);
     }
 
     IEnumerator DeactivateAnswers(AudioSource audioSource)

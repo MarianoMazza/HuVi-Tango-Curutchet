@@ -23,14 +23,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6236685123312407639}
-  m_LocalRotation: {x: -0, y: 0.038010065, z: -0, w: 0.99927735}
-  m_LocalPosition: {x: 0, y: 0, z: 1.9300003}
-  m_LocalScale: {x: 5.6995344, y: 6.1652923, z: 0.36822882}
+  m_LocalRotation: {x: -0, y: -0.0000000074505797, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6236685125332651797}
   - {fileID: 6236685123828510006}
-  m_Father: {fileID: 6236685123849691291}
-  m_RootOrder: 3
+  m_Father: {fileID: 6236685124672844439}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6236685123326828678
 GameObject:
@@ -63,7 +63,8 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.038010065, z: -0, w: 0.99927735}
   m_LocalPosition: {x: 0, y: 0, z: 1.93}
   m_LocalScale: {x: 5.6995344, y: 6.1652923, z: 0.36822882}
-  m_Children: []
+  m_Children:
+  - {fileID: 6236685124432025737}
   m_Father: {fileID: 6236685123849691291}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 4.3570004, z: 0}
@@ -90,6 +91,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -114,6 +116,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6236685123326828682
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -145,6 +148,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: set_enabled
           m_Mode: 6
           m_Arguments:
@@ -156,6 +160,7 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: ObjectSeen
           m_Mode: 2
           m_Arguments:
@@ -171,6 +176,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: set_enabled
           m_Mode: 6
           m_Arguments:
@@ -182,6 +188,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: resetCounter
           m_Mode: 1
           m_Arguments:
@@ -207,14 +214,20 @@ MonoBehaviour:
   dialogue: {fileID: 0}
   audioSource: {fileID: 0}
   nextObject: {fileID: 6236685124432025736}
+  timeToSpawnNextObject: 0
   activateNextAnimation: 0
   timeToAnimateNext: 0
+  timeToAnimateThisObject: 0
   rangerPosition: {fileID: 0}
   ranger: {fileID: 0}
   animationName: 
   question: {fileID: 0}
   nextQuestion: {fileID: 6236685124672844438}
   answers: {fileID: 6236685124432025736}
+  timeToNextQuestion: 0
+  amIFinalQuestion: 0
+  finalCollider: {fileID: 0}
+  dialogueIfLastQuestion: {fileID: 0}
 --- !u!1 &6236685123828510005
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,6 +286,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -297,6 +311,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6236685123828510009
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -328,6 +343,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: set_enabled
           m_Mode: 6
           m_Arguments:
@@ -339,6 +355,7 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: ObjectSeen
           m_Mode: 2
           m_Arguments:
@@ -354,6 +371,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: set_enabled
           m_Mode: 6
           m_Arguments:
@@ -365,6 +383,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: resetCounter
           m_Mode: 1
           m_Arguments:
@@ -390,14 +409,20 @@ MonoBehaviour:
   dialogue: {fileID: 0}
   audioSource: {fileID: 0}
   nextObject: {fileID: 0}
+  timeToSpawnNextObject: 0
   activateNextAnimation: 0
   timeToAnimateNext: 0
+  timeToAnimateThisObject: 0
   rangerPosition: {fileID: 0}
   ranger: {fileID: 0}
   animationName: 
   question: {fileID: 6236685124672844440}
   nextQuestion: {fileID: 0}
   answers: {fileID: 0}
+  timeToNextQuestion: 0
+  amIFinalQuestion: 0
+  finalCollider: {fileID: 0}
+  dialogueIfLastQuestion: {fileID: 0}
 --- !u!1 &6236685123849691290
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,9 +451,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6236685123326828679}
-  - {fileID: 6236685124432025737}
   - {fileID: 6236685124672844439}
-  - {fileID: 6236685123312407640}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -455,14 +478,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6236685124432025736}
-  m_LocalRotation: {x: -0, y: 0.038010065, z: -0, w: 0.99927735}
-  m_LocalPosition: {x: 0, y: 0, z: 1.9300003}
-  m_LocalScale: {x: 5.6995344, y: 6.1652923, z: 0.36822882}
+  m_LocalRotation: {x: -0, y: -0.0000000074505797, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6236685125195793837}
   - {fileID: 6236685124445087886}
-  m_Father: {fileID: 6236685123849691291}
-  m_RootOrder: 1
+  m_Father: {fileID: 6236685123326828679}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6236685124445087885
 GameObject:
@@ -522,6 +545,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -546,6 +570,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6236685124445087921
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -577,6 +602,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: set_enabled
           m_Mode: 6
           m_Arguments:
@@ -588,6 +614,7 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: ObjectSeen
           m_Mode: 2
           m_Arguments:
@@ -603,6 +630,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: set_enabled
           m_Mode: 6
           m_Arguments:
@@ -614,6 +642,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: resetCounter
           m_Mode: 1
           m_Arguments:
@@ -639,14 +668,20 @@ MonoBehaviour:
   dialogue: {fileID: 0}
   audioSource: {fileID: 0}
   nextObject: {fileID: 0}
+  timeToSpawnNextObject: 0
   activateNextAnimation: 0
   timeToAnimateNext: 0
+  timeToAnimateThisObject: 0
   rangerPosition: {fileID: 0}
   ranger: {fileID: 0}
   animationName: 
   question: {fileID: 6236685123326828680}
   nextQuestion: {fileID: 0}
   answers: {fileID: 0}
+  timeToNextQuestion: 0
+  amIFinalQuestion: 0
+  finalCollider: {fileID: 0}
+  dialogueIfLastQuestion: {fileID: 0}
 --- !u!1 &6236685124672844438
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,9 +713,10 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.038010065, z: -0, w: 0.99927735}
   m_LocalPosition: {x: 0, y: 0, z: 1.9300003}
   m_LocalScale: {x: 5.6995344, y: 6.1652923, z: 0.36822882}
-  m_Children: []
+  m_Children:
+  - {fileID: 6236685123312407640}
   m_Father: {fileID: 6236685123849691291}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 4.3570004, z: 0}
 --- !u!33 &6236685124672844444
 MeshFilter:
@@ -705,6 +741,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -729,6 +766,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6236685124672844442
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -760,6 +798,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: set_enabled
           m_Mode: 6
           m_Arguments:
@@ -771,6 +810,7 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: ObjectSeen
           m_Mode: 2
           m_Arguments:
@@ -786,6 +826,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: set_enabled
           m_Mode: 6
           m_Arguments:
@@ -797,6 +838,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: resetCounter
           m_Mode: 1
           m_Arguments:
@@ -822,14 +864,20 @@ MonoBehaviour:
   dialogue: {fileID: 0}
   audioSource: {fileID: 0}
   nextObject: {fileID: 6236685123312407639}
+  timeToSpawnNextObject: 0
   activateNextAnimation: 0
   timeToAnimateNext: 0
+  timeToAnimateThisObject: 0
   rangerPosition: {fileID: 0}
   ranger: {fileID: 0}
   animationName: 
   question: {fileID: 0}
   nextQuestion: {fileID: 0}
   answers: {fileID: 6236685123312407639}
+  timeToNextQuestion: 0
+  amIFinalQuestion: 0
+  finalCollider: {fileID: 0}
+  dialogueIfLastQuestion: {fileID: 0}
 --- !u!1 &6236685125195793836
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,6 +936,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -912,6 +961,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6236685125195794000
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -943,6 +993,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: set_enabled
           m_Mode: 6
           m_Arguments:
@@ -954,6 +1005,7 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: ObjectSeen
           m_Mode: 2
           m_Arguments:
@@ -969,6 +1021,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: set_enabled
           m_Mode: 6
           m_Arguments:
@@ -980,6 +1033,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: resetCounter
           m_Mode: 1
           m_Arguments:
@@ -1005,14 +1059,20 @@ MonoBehaviour:
   dialogue: {fileID: 0}
   audioSource: {fileID: 0}
   nextObject: {fileID: 0}
+  timeToSpawnNextObject: 0
   activateNextAnimation: 0
   timeToAnimateNext: 0
+  timeToAnimateThisObject: 0
   rangerPosition: {fileID: 0}
   ranger: {fileID: 0}
   animationName: 
   question: {fileID: 6236685123326828680}
   nextQuestion: {fileID: 0}
   answers: {fileID: 0}
+  timeToNextQuestion: 0
+  amIFinalQuestion: 0
+  finalCollider: {fileID: 0}
+  dialogueIfLastQuestion: {fileID: 0}
 --- !u!1 &6236685125332651796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,6 +1131,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1095,6 +1156,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6236685125332651800
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1126,6 +1188,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: set_enabled
           m_Mode: 6
           m_Arguments:
@@ -1137,6 +1200,7 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: ObjectSeen
           m_Mode: 2
           m_Arguments:
@@ -1152,6 +1216,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: set_enabled
           m_Mode: 6
           m_Arguments:
@@ -1163,6 +1228,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: 
           m_MethodName: resetCounter
           m_Mode: 1
           m_Arguments:
@@ -1188,11 +1254,17 @@ MonoBehaviour:
   dialogue: {fileID: 0}
   audioSource: {fileID: 0}
   nextObject: {fileID: 0}
+  timeToSpawnNextObject: 0
   activateNextAnimation: 0
   timeToAnimateNext: 0
+  timeToAnimateThisObject: 0
   rangerPosition: {fileID: 0}
   ranger: {fileID: 0}
   animationName: 
   question: {fileID: 6236685124672844440}
   nextQuestion: {fileID: 0}
   answers: {fileID: 0}
+  timeToNextQuestion: 0
+  amIFinalQuestion: 0
+  finalCollider: {fileID: 0}
+  dialogueIfLastQuestion: {fileID: 0}

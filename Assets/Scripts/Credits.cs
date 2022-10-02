@@ -5,13 +5,13 @@ using UnityEngine;
 public class Credits : MonoBehaviour
 {
     /*
-     *  Year 2021
+     *  Year 2022
      * 
         Coordinators: 
         Ana Clara Rucci
         Cecilia Sanz
 
-        HuVi Ischigualasto-Talampaya developer: Mariano Ariel Mazza
+        HuVi Tango-Curutchet developer: Mariano Ariel Mazza
 
         Educational information provided by:
         Luciana Renzella 

@@ -104,4 +104,9 @@ public class InteractableWithSound : Interactable
     {
         return audioSource;
     }
+
+    public void SetNextObject(GameObject _nextObject)
+    {
+        nextObject = _nextObject;
+    }
 }
