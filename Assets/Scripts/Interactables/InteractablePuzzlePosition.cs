@@ -51,6 +51,18 @@ public class InteractablePuzzlePosition : Interactable
             puzzleManager.IncreaseObjectiveCount();
             objectCurrentlyHeldByPlayer.GetComponent<InteractablePickUp>().isPositioned = true;
             objectCurrentlyHeldByPlayer.GetComponent<InteractablePickUp>().enabled = false;
+            if (this.GetComponent<MeshRenderer>() != null)
+            {
+                this.GetComponent<MeshRenderer>().enabled = false;
+            }
+            else
+            {
+                Component[] components = this.GetComponentsInChildren(typeof(MeshRenderer), false);
+                foreach(MeshRenderer component in components)
+                {
+                    component.enabled = false;
+                }
+            }
         }
     }
 
