@@ -10,13 +10,15 @@ public class Gaze : MonoBehaviour
     [SerializeField]
     DemoPlayerController demoPlayerController;
 
+    [SerializeField]
+    AudioSource audioSource;
+
     public Animator objectAnimator;
     public float myTime = 0f;
     public Transform radialPorgress;
     public bool gazeTimerUp = false;
     public GameObject text;
     Interactable seenObjectScript;
-    int interactableLayer = 8;
 
     private void Start()
     {
@@ -26,11 +28,14 @@ public class Gaze : MonoBehaviour
 
     private void Update()
     {
-        myTime += Time.deltaTime;
-        radialPorgress.GetComponent<Image>().fillAmount = myTime / 2;
-        if (myTime >= 2f && !gazeTimerUp)
-        {
-            Interact();
+        bool isNotListeningToAudio = audioSource== null || !audioSource.isPlaying;
+        if (isNotListeningToAudio) {
+            myTime += Time.deltaTime;
+            radialPorgress.GetComponent<Image>().fillAmount = myTime / 2;
+            if (myTime >= 2f && !gazeTimerUp)
+            {
+                Interact();
+            }
         }
     }
 
@@ -63,5 +68,10 @@ public class Gaze : MonoBehaviour
     public void SetSeenObjectScript(Interactable interactableScript)
     {
         seenObjectScript = interactableScript;
+    }
+
+    public void SetAudioSource(AudioSource audioSource)
+    {
+        this.audioSource = audioSource;
     }
 }

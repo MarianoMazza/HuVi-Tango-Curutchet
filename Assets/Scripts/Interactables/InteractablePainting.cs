@@ -22,6 +22,9 @@ public class InteractablePainting : InteractableWithSound
     [SerializeField]
     GameObject ejector;
 
+    [SerializeField]
+    int videoSecondsDuration;
+
     private int milisecondsBeforeTeleporting = 1000;
 
     public override void Interact()
@@ -47,6 +50,7 @@ public class InteractablePainting : InteractableWithSound
         await Task.Delay(milisecondsBeforeTeleporting);
         sphere360VideoTransform.GetComponent<VideoPlayer>().clip = video360;
         sphere360VideoTransform.GetComponent<Sphere360>().SetPlayerTransform(player.transform);
+        sphere360VideoTransform.GetComponent<Sphere360>().SetSecondsToFinishVideo(this.videoSecondsDuration);
         player.transform.position = sphere360VideoTransform.position;
         player.GetComponent<CharacterController>().enabled = false;
         sphere360VideoTransform.gameObject.SetActive(true);

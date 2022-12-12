@@ -23,14 +23,31 @@ public class QuestionsScript : InteractableWithSound
     bool amIFinalQuestion;
 
     [SerializeField]
+    bool amITheCorrectAnswer;
+
+    [SerializeField]
     GameObject ejector;
 
     [SerializeField]
     AudioClip dialogueIfLastQuestion;
 
+    [SerializeField]
+    AudioClip negativeResponse;
+
+    [SerializeField]
+    AudioClip positiveResponse;
+
 
     public override void Interact()
     {
+        if (amITheCorrectAnswer)
+        {
+            this.SetDialogue(positiveResponse);
+        }
+        else if(!amIFinalQuestion)
+        {
+            this.SetDialogue(negativeResponse);
+        }
         base.Interact();
         if (question != null)
         {
@@ -61,9 +78,15 @@ public class QuestionsScript : InteractableWithSound
     {
         answers.SetActive(false);
         yield return new WaitWhile(() => audioSource.isPlaying);
-        this.SetDialogue(dialogueIfLastQuestion);
-        this.Speak();
-        ejector.SetActive(true);
+        if(dialogueIfLastQuestion != null)
+        {
+            this.SetDialogue(dialogueIfLastQuestion);
+            this.Speak();
+        }
+        if (amIFinalQuestion)
+        {
+            ejector.SetActive(true);
+        }
     }
 
     IEnumerator DeactivateAnswers(AudioSource audioSource)

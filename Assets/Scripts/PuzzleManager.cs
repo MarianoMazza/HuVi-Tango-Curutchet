@@ -10,6 +10,12 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField]
     GameObject nextObject;
 
+    [SerializeField]
+    GameObject objectToDisable;
+
+    [SerializeField]
+    GameObject[] distractors;
+
     int objectiveCount;
 
     public void IncreaseObjectiveCount()
@@ -26,9 +32,13 @@ public class PuzzleManager : MonoBehaviour
 
     protected virtual void DetermineIfObjectiveIsAccomplished()
     {
-        if(objectiveCount >= totalObjectives)
+        if (objectiveCount >= totalObjectives)
         {
             nextObject.SetActive(true);
+            foreach (GameObject gameObject in distractors) 
+            {
+                gameObject.SetActive(false);
+            }
         }
     }
 
@@ -45,5 +55,10 @@ public class PuzzleManager : MonoBehaviour
     public GameObject GetNextObject()
     {
         return nextObject;
+    }
+
+    public GameObject GetObjectToDisable()
+    {
+        return objectToDisable;
     }
 }

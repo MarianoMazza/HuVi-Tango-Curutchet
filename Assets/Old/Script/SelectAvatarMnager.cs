@@ -75,7 +75,7 @@ IEnumerator delaySubtittle(float time)
 					Debug.LogError (filePath);
 					/////
 					canvas.enabled =true;
-					baseAvatar.SetActive(true);
+					//baseAvatar.SetActive(true);
 					break;
 				}
 			default:

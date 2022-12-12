@@ -18,7 +18,7 @@ public class Ejector : MonoBehaviour
 
     private void Start()
     {
-        pushAngle = 90 / objectsToBeEjected.Length;
+        pushAngle = (90 / objectsToBeEjected.Length) / 2;
         pushAngleModification = pushAngle;
         StartCoroutine(Eject());
     }

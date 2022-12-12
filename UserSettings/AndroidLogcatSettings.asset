@@ -1,12 +1,12 @@
 {
     "m_SelectedDeviceId": "R58R77D9YHK",
     "m_SelectedPackage": {
-        "deviceId": "R58R77D9YHK",
-        "name": "com.sec.android.app.launcher",
-        "processId": 7140,
+        "deviceId": "",
+        "name": "",
+        "processId": 0,
         "exited": false
     },
-    "m_SelectedPriority": 0,
+    "m_SelectedPriority": 3,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "R58R77D9YHK",
@@ -18,7 +18,7 @@
             "deviceId": "R58R77D9YHK",
             "name": "com.sec.android.app.launcher",
             "processId": 7140,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "R58R77D9YHK",
@@ -30,6 +30,12 @@
             "deviceId": "R58R77D9YHK",
             "name": "com.DefaultCompany.TestCardboard",
             "processId": 11238,
+            "exited": true
+        },
+        {
+            "deviceId": "R58R77D9YHK",
+            "name": "com.sec.android.app.launcher",
+            "processId": 3182,
             "exited": false
         }
     ],
@@ -85,7 +91,7 @@
     },
     "m_FilterOptions": {
         "m_Filter": "",
-        "m_UseRegularExpressions": false,
+        "m_UseRegularExpressions": true,
         "m_MatchCase": false
     },
     "m_SymbolPaths": [],

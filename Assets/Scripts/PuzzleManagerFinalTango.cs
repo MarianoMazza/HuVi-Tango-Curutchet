@@ -12,6 +12,10 @@ public class PuzzleManagerFinalTango : PuzzleManager
         if (this.GetObjectiveCount() >= this.GetTotalObjectives())
         {
             this.GetNextObject().SetActive(true);
+            if (this.GetObjectToDisable() != null)
+            {
+                this.GetObjectToDisable().SetActive(false);
+            }
             levelManager.EndTangoRoom();
         }
     }

@@ -5,6 +5,9 @@ public class InteractablePickUp : Interactable
     [SerializeField]
     GameObject playerHand;
 
+    [SerializeField]
+    AudioClip soundToBePlayed;
+
     Vector3 startingPosition;
     Quaternion startingRotation;
     Vector3 startingScale;
@@ -19,6 +22,7 @@ public class InteractablePickUp : Interactable
 
     public override void Interact()
     {
+        PlaySound();
         if (isPositioned)
         {
             this.transform.parent.GetChild(0).GetComponent<InteractablePuzzlePosition>().LoseObjective();
@@ -28,16 +32,19 @@ public class InteractablePickUp : Interactable
         {
             GameObject childGameObject0 = playerHand.transform.GetChild(0).gameObject;
             childGameObject0.transform.parent = null;
+            childGameObject0.GetComponent<Collider>().enabled = true;
             childGameObject0.GetComponent<InteractablePickUp>().ResetRotationAndScale();
             childGameObject0.GetComponent<Rigidbody>().isKinematic = false;
             this.transform.parent = playerHand.transform;
             this.transform.localPosition = new Vector3(0, 0, 0);
+            this.GetComponent<Collider>().enabled = false;
             this.GetComponent<Rigidbody>().isKinematic = true;
         }
         else
         {
             this.transform.parent = playerHand.transform;
             this.transform.localPosition = new Vector3(0, 0, 0);
+            this.GetComponent<Collider>().enabled = false;
             this.GetComponent<Rigidbody>().isKinematic = true;
         }
     }
@@ -46,5 +53,15 @@ public class InteractablePickUp : Interactable
     {
         this.transform.localRotation = startingRotation;
         this.transform.localScale = startingScale;
+    }
+
+    public void PlaySound()
+    {
+        if (soundToBePlayed != null)
+        {
+            AudioSource audioSource = this.GetComponent<AudioSource>();
+            audioSource.clip = soundToBePlayed;
+            audioSource.Play();
+        }
     }
 }

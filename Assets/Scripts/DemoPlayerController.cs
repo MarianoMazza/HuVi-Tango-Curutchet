@@ -25,7 +25,7 @@ public class DemoPlayerController : MonoBehaviour
     private CharacterController characterController = null;
 
     // Player movement speed.
-    private float movementSpeed = 5.0f;
+    private float movementSpeed = 9.0f;
 
     // Target camera rotation in degrees.
     private float rotationX = 0.0f;

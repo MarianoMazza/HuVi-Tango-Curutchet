@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MOVER : MonoBehaviour
 {
-    public float speed = 3.5f;
+    public float speed = 3f;
     private float gravity = 10f;
     private CharacterController controller;
     Vector3 pos;
@@ -20,8 +20,6 @@ public class MOVER : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        //inicio.SetActive(true);
-        
     }
 
     // Update is called once per frame
@@ -52,13 +50,10 @@ public class MOVER : MonoBehaviour
     }
 
     void MoverJugador(){
-
-
-        //float vertical = Input.GetAxis("Vertical");
+        #if UNITY_ANDROID
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = 1;
         float altura = 0;
-        //Debug.Log(vertical);
         if (Input.GetKey(KeyCode.Z))
         {
             transform.position += transform.up * velocidad;
@@ -83,19 +78,13 @@ public class MOVER : MonoBehaviour
         rotation = mainCamera.transform.localRotation.eulerAngles;
         float rotationX = rotation.x;
         float rotationY = rotation.y;
-        //Debug.Log(camera.transform.rotation.x);
-        //Debug.Log(rotationX);
+
         if (rotationX >= minimumRotationX && rotationX < 200)
         {
             vel.y -= gravity;
             controller.Move(vel * Time.deltaTime);
             pos = new Vector3(0.0f, 2.0f, 0.0f);
-        }//else if (Input.GetKeyDown(KeyCode.Z))
-        //{
-        //    vel.y = 8;
-         //   controller.Move(vel * Time.deltaTime);
-        //}
-
-            //pos = Player.transform.position;
+        }
+        #endif
     }
 }

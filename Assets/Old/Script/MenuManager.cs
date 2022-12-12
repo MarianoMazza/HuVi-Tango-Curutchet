@@ -8,10 +8,10 @@ using UnityEngine.SceneManagement;
 //#endif
 
 [RequireComponent (typeof(AudioSource))]
-public class MenuManager : MonoBehaviour {
+public class MenuManager : Interactable {
     string url = "https://yt3.ggpht.com/-6k_c7iwccMs/AAAAAAAAAAI/AAAAAAAAAAA/ayDihdE710o/s88-c-k-no-mo-rj-c0xffffff/photo.jpg";
     Texture2D textura;
-	protected int salio = 0;
+	public int salio = 0;
 	protected string filePath = "";
 	protected string[] registros= new string[1024];
 	//El menu emocion queda sin uso
@@ -24,10 +24,20 @@ public class MenuManager : MonoBehaviour {
 	public GameObject subtittles;
 	AudioSource audioData;
 
+	[SerializeField]
+	GameObject begginningMenuPlayer;
 
+	[SerializeField]
+	GameObject gamePlayer;
 
-    // Use this for initialization
-    void Start () {
+	[SerializeField]
+	GameObject neighborhood;
+
+	[SerializeField]
+	GameObject beginningMenu;
+
+	// Use this for initialization
+	void Start () {
 		 filePath = Application.persistentDataPath + "/INICIAL_menuJuego.txt";
 
 	}
@@ -167,6 +177,12 @@ public class MenuManager : MonoBehaviour {
 		print ("Radial progress is done!");
 	}
 
-
+	public override void Interact()
+	{
+		begginningMenuPlayer.SetActive(false);
+		gamePlayer.SetActive(true);
+		neighborhood.SetActive(true);
+		beginningMenu.SetActive(false);
+	}
 }
 

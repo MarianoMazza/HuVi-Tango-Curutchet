@@ -114,7 +114,7 @@ public class SelectAvatar : MenuManager {
 						File.WriteAllLines (filePathAvatar, menuInfo);
 					}
 
-					Debug.LogError (filePathAvatar);
+//					Debug.LogError (filePathAvatar);
 					/////
 					this.disableAvatar(index);
 					if (index == 0) {

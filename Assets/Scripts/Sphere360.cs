@@ -32,4 +32,9 @@ public class Sphere360 : MonoBehaviour {
         this.originalPlayerPosition = playerTransform.position;
     }
 
+    public void SetSecondsToFinishVideo(int secondsToFinishVideo)
+    {
+        this.secondsToFinishVideo = secondsToFinishVideo;
+    }
+
 }

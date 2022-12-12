@@ -183,4 +183,6 @@ public class DialogWelcome : Interactable {
     {
 		play();
 	}
+
+	public void OnPointerExit() { }
 }

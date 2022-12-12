@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraPointer : MonoBehaviour
 {
-    private const float _maxDistance = 10;
+    public float _maxDistance = 10;
     private GameObject _gazedAtObject = null;
     public GvrReticlePointer gvrReticlePointer;
 
