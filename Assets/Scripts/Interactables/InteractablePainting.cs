@@ -25,6 +25,12 @@ public class InteractablePainting : InteractableWithSound
     [SerializeField]
     int videoSecondsDuration;
 
+    [SerializeField]
+    float volume = 1;
+
+    [SerializeField]
+    AudioClip audioAfterSendingPlayerBack;
+
     private int milisecondsBeforeTeleporting = 1000;
 
     public override void Interact()
@@ -34,14 +40,6 @@ public class InteractablePainting : InteractableWithSound
         {
             TakePlayerToSee360Video();
         }
-        else if (prizeIfThereIsNoVideo)
-        {
-            //prizeIfThereIsNoVideo.SetActive(true);
-        }
-        else
-        {
-            //this.GetComponent<Animator>().enabled = true;
-        }
     }
 
     private async void TakePlayerToSee360Video()
@@ -49,6 +47,7 @@ public class InteractablePainting : InteractableWithSound
         playerCanvas.SetTrigger("fadeToWhite");
         await Task.Delay(milisecondsBeforeTeleporting);
         sphere360VideoTransform.GetComponent<VideoPlayer>().clip = video360;
+        sphere360VideoTransform.GetComponent<VideoPlayer>().SetDirectAudioVolume(0, volume);
         sphere360VideoTransform.GetComponent<Sphere360>().SetPlayerTransform(player.transform);
         sphere360VideoTransform.GetComponent<Sphere360>().SetSecondsToFinishVideo(this.videoSecondsDuration);
         player.transform.position = sphere360VideoTransform.position;
@@ -56,6 +55,11 @@ public class InteractablePainting : InteractableWithSound
         sphere360VideoTransform.gameObject.SetActive(true);
         await Task.Delay(((int)sphere360VideoTransform.GetComponent<Sphere360>().secondsToFinishVideo * 1000) + 3000);
         ActivateEjector();
+        if(audioAfterSendingPlayerBack != null)
+        {
+            this.SetDialogue(audioAfterSendingPlayerBack);
+            this.Speak();
+        }
     }
 
     private void ActivateEjector() {

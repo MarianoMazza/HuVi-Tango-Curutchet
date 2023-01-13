@@ -12876,4 +12876,18 @@ AnimationClip:
     script: {fileID: 0}
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 25.516666
+    functionName: SetDialogue
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: b25338701af167c47978e91e9687db01, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 26.016666
+    functionName: Speak
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

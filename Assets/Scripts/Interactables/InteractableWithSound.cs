@@ -31,18 +31,25 @@ public class InteractableWithSound : Interactable
     [SerializeField]
     GameObject ranger;
 
+    [SerializeField]
+    bool disableAnimatorOnInteraction;
+
     public override void Interact()
     {
         RepositionRanger();
         Speak();
         StartCoroutine(AnimateAfterTime(this.gameObject, timeToAnimateThisObject));
         StartCoroutine(SpawnNextObject(timeToSpawnNextObject));
-        DisableThisCollider();
+        DisableThisColliderAndAnimation();
     }
 
-    public void DisableThisCollider()
+    public void DisableThisColliderAndAnimation()
     {
         this.gameObject.GetComponent<Collider>().enabled = false;
+        if(disableAnimatorOnInteraction)
+        {
+            this.GetComponent<Animator>().enabled = false;
+        }
     }
 
     public void RepositionRanger()
@@ -72,7 +79,13 @@ public class InteractableWithSound : Interactable
         if (gameObject.GetComponent<Animator>())
         {
             yield return new WaitForSeconds(time);
-            gameObject.GetComponent<Animator>().enabled = true;
+            if (gameObject != this.gameObject)
+            {
+                gameObject.GetComponent<Animator>().enabled = true;
+            } else if (!disableAnimatorOnInteraction)
+            {
+                gameObject.GetComponent<Animator>().enabled = true;
+            }
         }
     }
 

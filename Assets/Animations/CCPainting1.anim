@@ -882,7 +882,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 32.066666
+    m_StopTime: 48
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -2978,6 +2978,20 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 30.5
+    functionName: Speak
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 47.516666
+    functionName: SetDialogue
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 80626440ae7d08245907ff03ca5b2e43, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 48
     functionName: Speak
     data: 
     objectReferenceParameter: {fileID: 0}

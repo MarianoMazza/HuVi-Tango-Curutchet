@@ -44,7 +44,7 @@ public class QuestionsScript : InteractableWithSound
         {
             this.SetDialogue(positiveResponse);
         }
-        else if(!amIFinalQuestion)
+        else
         {
             this.SetDialogue(negativeResponse);
         }
