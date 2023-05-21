@@ -7,6 +7,7 @@ TagManager:
   - Objective
   - Distractor
   - Footprint
+  - PickupCollider
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - Quads
   - Water
   - UI
-  - 
-  - 
+  - PickupCollider
+  - Player
   - 
   - 
   - 

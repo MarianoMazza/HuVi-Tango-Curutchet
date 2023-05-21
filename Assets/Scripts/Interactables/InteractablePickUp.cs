@@ -8,14 +8,15 @@ public class InteractablePickUp : Interactable
     [SerializeField]
     AudioClip soundToBePlayed;
 
-    Vector3 startingPosition;
+    [SerializeField]
+    AudioSource tangoRoomGuide;
+
     Quaternion startingRotation;
     Vector3 startingScale;
     public bool isPositioned { get; set; }
 
     private void Start()
     {
-        startingPosition = this.transform.localPosition;
         startingScale = this.transform.localScale;
         startingRotation = this.transform.localRotation;
     }
@@ -59,7 +60,15 @@ public class InteractablePickUp : Interactable
     {
         if (soundToBePlayed != null)
         {
-            AudioSource audioSource = this.GetComponent<AudioSource>();
+            AudioSource audioSource;
+            if (tangoRoomGuide != null)
+            {
+                audioSource = tangoRoomGuide;
+            } 
+            else
+            {
+                audioSource = this.GetComponent<AudioSource>();
+            }
             audioSource.clip = soundToBePlayed;
             audioSource.Play();
         }

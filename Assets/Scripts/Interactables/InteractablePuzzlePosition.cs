@@ -127,7 +127,7 @@ public class InteractablePuzzlePosition : Interactable
         rigidbody.AddForce((transform.forward * -1) * ejectForce);
         if (ejectUpwards)
         {
-            rigidbody.AddForce((transform.up * -1) * ejectForce);
+            rigidbody.AddForce((transform.up * 1) * ejectForce);
         }
     }
 
